@@ -6,6 +6,7 @@ from sqlalchemy import create_engine
 
 # Load environment variables
 load_dotenv()
+#st.text_input
 
 # Initialize session state
 if 'processor' not in st.session_state:
@@ -72,7 +73,7 @@ if st.session_state.processor is None:
         # Documents Folder Configuration
         st.write("**Documents Folder Path:**")
         documents_folder = st.text_input(
-            "",
+            "Documents Folder Path",
             placeholder="Enter path to your documents folder (e.g., docs)",
             label_visibility="collapsed"
         )

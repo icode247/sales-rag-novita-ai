@@ -1,13 +1,14 @@
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langchain.agents import AgentExecutor, create_sql_agent, create_react_agent
-from langchain_experimental.agents.agent_toolkits import create_csv_agent,create_pandas_dataframe_agent
-from langchain.agents.agent_toolkits import SQLDatabaseToolkit
+from langchain.agents import AgentExecutor, create_react_agent
+from langchain_community.agent_toolkits.sql.base import create_sql_agent
+from langchain_experimental.agents.agent_toolkits import create_csv_agent, create_pandas_dataframe_agent
+from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
 from langchain.agents import AgentType
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import FAISS
-from langchain.sql_database import SQLDatabase
+from langchain_community.vectorstores import FAISS
+from langchain_community.utilities import SQLDatabase
 from langchain.prompts import PromptTemplate
-from langchain.tools import ReadFileTool
+from langchain_community.tools import ReadFileTool
 from langchain.schema import Document
 import os
 from dotenv import load_dotenv
@@ -346,4 +347,4 @@ Question: {query}
         except Exception as e:
             print(f"Document Processing Error: {str(e)}")
                 
-        return "Could not find relevant information in either SQL database or documents." 
+        return "Could not find relevant information in either SQL database or documents."
